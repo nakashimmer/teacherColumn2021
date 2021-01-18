@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google Analytics --><script src="/~nakashima/ga.js"></script>
+		<meta charset="utf-8">
+		<title>CSSシミュレーション</title>
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../style.css">
+		<style>
+			*{margin:0;}
+
+			#wrap{
+				display: flex;
+				max-width:100% !important;
+			}
+
+
+			#ctrl{
+				flex:1;
+				background-color: #444;color:white;
+				padding:0.5em;
+			}
+
+			input[type="color"]{width:50px;}
+
+
+
+			pre{
+				border:1px solid ;
+				padding:0.3em;
+				background-color: #eee;
+				color:black;
+				font-family:menlo;
+			}
+
+			#sample{
+				flex:1;
+				background-color: #fff;
+				display:flex;
+				flex-direction:column;
+				justify-content: center;
+				align-items: center; 
+			}
+
+			#box1{
+				width:150px;
+				transition:all 0.3s linear;
+			}
+
+			@media(max-width:800px){
+				#wrap{display:block;}
+				#sample{
+					height:calc(100vh - 100px);
+				}
+			}
+
+		</style>
+	</head>
+	<body>
+		<h1>CSSシミュレーション</h1>
+		<div id="wrap">
+			<div id="ctrl">
+				<ol>
+					<li><span class="th">行間(行高)：</span>
+						<input type="range" min=5 max=50 step=1 value=18 id=i1>
+					</li>
+
+					<li><span class="th">段落の幅：</span>
+						<input type="range" min=0 max=600 step=1 value=300 id=i2>
+					</li>
+
+					<li><span class="th">文字の大きさ：</span>
+						<input type="range" min=0 max=100 value=16 id=i0>
+					</li>
+
+					<li><span class="th">文字の色：</span>
+						<input type="color" id=i3>
+					</li>
+
+					<li><span class="th">フォント：</span>
+						<label><input type="radio" name="font" value="serif" id=i4 checked>明朝体</label>
+						<label><input type="radio" name="font" value="sans-serif" id=i5>ゴシック体</label>
+					</li>
+
+					<li><span class="th">文字太さ:</span>
+						<input type="range" min=100 max=900 step=100 value=400 id=i6>
+					</li>
+					<li><span class="th">文字揃え：</span>
+						<label><input type="radio" name="soroe" value="left" id=i7 checked>左</label>
+						<label><input type="radio" name="soroe" value="center" id=i8 >中</label>
+						<label><input type="radio" name="soroe" value="right" id=i9>右</label>
+					</li>
+
+	
+					<li><span class="th">段落枠色：</span>
+						<input type="color" id=i10>
+					</li>
+
+						<li><span class="th">段落枠太さ：</span>
+							<input type="range" value="1" min=0 max=50 id=i11>
+						</li>
+
+	
+
+					<li><span class="th">段落背景色：</span>
+						<input type="color" value="#ffffff" id=i12>
+					</li>
+				</ol>
+				<p>CSSコード</p>
+				<pre><code>#box{<span id=dsv>***</span><br>}</code></pre>
+			</div>
+
+			<div id="sample">
+				<div id="box1" contenteditable>この箱はIDがboxです(=#box)。<br>
+					このサンプルは、CSSのシミュレーションです。<br>左の入力のパーツ(=input)を操作してこの文章のスタイルを変更し、CSSのコードを確認してください。<br>このテキストも編集できます。</div>
+			</div>
+
+		</div>
+
+		<footer>
+			<p><small><a href="https://www.cyber-u.ac.jp/cu_life/talk/person10.html">(C)Nakashima</a></small></p>
+		</footer>
+
+		<script>
+			const box1 = document.getElementById("box1");
+			const input = document.getElementsByTagName("input");
+			const dsv = document.getElementById("dsv");
+
+
+			for(let i=0;i<input.length;i++){
+				input[i].addEventListener("change",Change);
+			}
+			Change();		
+			function Change(){
+
+				let str = `
+
+	line-height:`+ input[0].value +`px;
+	width:`+ input[1].value +`px;
+	font-size:`+ input[2].value +`px;
+	color:`+ input[3].value +`;
+	font-family:`
+					+ (input[4].checked ? input[4].value : "")
+					+ (input[5].checked ? input[5].value : "") + `;
+	font-weight:`+ input[6].value +`;
+	text-align:`
+		+ (input[7].checked ? input[7].value : "") 
+		+ (input[8].checked ? input[8].value : "")
+		+ (input[9].checked ? input[9].value : "") + `;
+	border:`+ input[10].value +` solid `+ input[11].value +`px;
+	background-color:`+ input[12].value +`;`;
+				dsv.innerHTML=str;
+				box1.style=str;
+
+				console.log(input[4].value );
+			}
+		
+		</script>
+	</body>
+</html>

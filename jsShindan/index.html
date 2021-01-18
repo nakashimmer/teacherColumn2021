@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google Analytics --><script src="/~nakashima/ga.js"></script>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="../style.css">
+	<style>
+		#box1{
+			max-width:500px;
+		}
+		input{
+			color:black;
+			text-align:center;
+			height:2em;
+		}
+		#msg{
+			border:1px solid gray;
+			padding:0.5em;
+			margin:0 auto;
+			border-radius:0.5em;
+			width:80%;
+		}
+
+	</style>
+
+	</head>
+	<body>
+		<h1>診断アプリ</h1>
+		<div id="wrap" class="center">
+			<div id="box1">
+				<p class="explain">名前を入力して、リターンキーを押してください。結果をクリックするとTwitterに投稿する画面が表示されます（使用は自己責任でお願いします）</p>
+				<p>あなたをプログラムにたとえると…</p>
+				<ul>
+					<li>あなたの名前：<input type="text" id="name" placeholder="名前入力→改行キー"></li>
+				</ul>
+					<p id="msg">なにがでるかな？</p>
+				</div>
+
+			</div>
+		</div>
+		<footer>
+			<p><small><a href="https://www.cyber-u.ac.jp/cu_life/talk/person10.html">(C)Nakashima</a></small></p>
+		</footer>
+
+
+		
+		<script>
+			const name = document.getElementById("name");
+			const msg = document.getElementById("msg");
+			const kekka=[
+				"ちょっと優柔不断だけど頼れるJavaScript",
+				"いつもおしゃれなCSS",
+				"芯の通ったHTML",
+				"HTMLと仲のよいPHP",
+				"今が旬のPython",
+				"基本をしっかりとC言語",
+			]
+
+			name.addEventListener("change",()=>{
+				if(!name.value){return;}
+				let random=Math.floor(Math.random()*kekka.length);
+
+				let str	= name.value+"さんにぴったりの言語は「"+kekka[random]+"」です";
+				str='<a target="_blank" href="http://twitter.com/intent/tweet?text='+str+'&hashtags=サイバー大学">'+str+'<br>結果を友だちとシェアしよう！</a>';
+				msg.innerHTML=str;
+			});
+		</script>
+
+	</body>
+</html>

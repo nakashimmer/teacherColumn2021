@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- Google Analytics --><script src="/~nakashima/ga.js"></script>
+		<meta charset="utf-8">
+		<title>位置情報アプリ</title>
+		<meta name=viewport content="width=device-width">
+		<link rel="stylesheet" href="../style.css">
+		<style>
+			#box1{
+				max-width:500px;
+
+			}
+		</style>
+
+	</head>
+	<body>
+		<h1>位置情報アプリ</h1>
+		<div id="wrap" class="center">
+			<div id="box1">
+				<p id="msg" class="explain"></p>
+
+				<p><button id="btn1">位置情報を取得</button></p>
+				<ul>
+					
+					<li>緯度：<span id="ido"></span></li>
+					<li>経度：<span id="keido"></span></li>
+				</ul>
+				</p>
+				<p>→<span id="map">地図を表示</span></p>
+			</div>
+		</div>
+		<footer>
+			<p><small><a href="https://www.cyber-u.ac.jp/cu_life/talk/person10.html">(C)Nakashima</a></small></p>
+		</footer>
+
+		<script>
+			const MSG=document.getElementById("msg");
+			const BTN1=document.getElementById("btn1");
+			const map = document.getElementById("map");
+			const IDO=document.getElementById("ido");
+			const KEIDO=document.getElementById("keido");
+
+			if(navigator.geolocation){
+				MSG.innerHTML="使用できますので、「位置情報を取得」ボタンをクリックして、緯度経度を取得し、「地図を表示」リンクをクリックしてGoogle Mapを表示してください。お使いの環境により正しい住所が表示されないことがありますのでご了承ください。";
+			}else{
+				MSG.innerHTML="なにかしらの原因で使用できません";
+			}
+			//Android用
+			let option={enableHighAccuracy:true,timeout:10000,maximumAge:0};
+			
+			let nav;
+
+			BTN1.addEventListener("click",()=>{
+				navigator.geolocation.getCurrentPosition(
+					seiko,shippai,option
+				);		
+			});
+			
+			//成功
+			function seiko(position){
+				var ido = position.coords.latitude;
+				var keido = position.coords.longitude;
+				IDO.innerHTML = ido;
+				KEIDO.innerHTML = keido;
+
+				//地図
+				map.innerHTML=
+					"<a target=_blank href='https://maps.google.com/maps?q=" +ido+ "," +keido+ "'>地図を表示(Google Mapへ)</a>";
+			}
+
+			//失敗
+			function shippai(err){
+				alert("失敗"+err.code+err.message);
+			}
+		</script>
+	</body>
+</html>
