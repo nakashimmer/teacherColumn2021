@@ -58,6 +58,7 @@
 	</head>
 	<body>
 		<h1>CSSシミュレーション</h1>
+		<p>このサンプルは、CSSのシミュレーションです。<br>左側の入力(=input)を操作してCSSの動作を確認できます。</p>
 		<div id="wrap">
 			<div id="ctrl">
 				<ol>
@@ -92,15 +93,14 @@
 					</li>
 
 	
+					<li><span class="th">段落枠太さ：</span>
+						<input type="range" value="1" min=0 max=50 id=i11>
+					</li>
+					
 					<li><span class="th">段落枠色：</span>
 						<input type="color" id=i10>
 					</li>
 
-						<li><span class="th">段落枠太さ：</span>
-							<input type="range" value="1" min=0 max=50 id=i11>
-						</li>
-
-	
 
 					<li><span class="th">段落背景色：</span>
 						<input type="color" value="#ffffff" id=i12>
@@ -111,8 +111,8 @@
 			</div>
 
 			<div id="sample">
-				<div id="box1" contenteditable>この箱はIDがboxです(=#box)。<br>
-					このサンプルは、CSSのシミュレーションです。<br>左の入力のパーツ(=input)を操作してこの文章のスタイルを変更し、CSSのコードを確認してください。<br>このテキストも編集できます。</div>
+				<div id="box1" contenteditable>サイバー大学は、いつでも、どこでも、パソコンでもスマートフォンでも受講できます。<br>
+そして、「ビジネスのわかるITエンジニア・ITのわかるビジネスパーソン」の育成を目指しています。</div>
 			</div>
 
 		</div>
@@ -149,7 +149,7 @@
 		+ (input[7].checked ? input[7].value : "") 
 		+ (input[8].checked ? input[8].value : "")
 		+ (input[9].checked ? input[9].value : "") + `;
-	border:`+ input[10].value +` solid `+ input[11].value +`px;
+	border:`+ input[11].value +` solid `+ input[10].value +`px;
 	background-color:`+ input[12].value +`;`;
 				dsv.innerHTML=str;
 				box1.style=str;
