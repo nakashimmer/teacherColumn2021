@@ -58,52 +58,56 @@
 	</head>
 	<body>
 		<h1>CSSシミュレーション</h1>
-		<p>このサンプルは、CSSのシミュレーションです。<br>左側の入力(=input)を操作してCSSの動作を確認できます。</p>
+		<p>このサンプルは、CSSのシミュレーションです。左側入力を操作してCSSの動作を確認できます。</p>
 		<div id="wrap">
 			<div id="ctrl">
 				<ol>
 					<li><span class="th">行間(行高)：</span>
-						<input type="range" min=5 max=50 step=1 value=18 id=i1>
+						<input type="range" min="5" max="50" step="1" value="18">
 					</li>
 
 					<li><span class="th">段落の幅：</span>
-						<input type="range" min=0 max=600 step=1 value=300 id=i2>
+						<input type="range" min="0" max="600" step="1" value="300">
 					</li>
 
 					<li><span class="th">文字の大きさ：</span>
-						<input type="range" min=0 max=100 value=16 id=i0>
+						<input type="range" min="0" max="100" value="16">
+					</li>
+					
+					<li><span class="th">枠内余白：</span>
+						<input type="range" min="0" max="100" value="0">
 					</li>
 
 					<li><span class="th">文字の色：</span>
-						<input type="color" id=i3>
+						<input type="color">
 					</li>
 
 					<li><span class="th">フォント：</span>
-						<label><input type="radio" name="font" value="serif" id=i4 checked>明朝体</label>
-						<label><input type="radio" name="font" value="sans-serif" id=i5>ゴシック体</label>
+						<label><input type="radio" name="font" value="serif" checked>明朝体</label>
+						<label><input type="radio" name="font" value="sans-serif">ゴシック体</label>
 					</li>
 
 					<li><span class="th">文字太さ:</span>
-						<input type="range" min=100 max=900 step=100 value=400 id=i6>
+						<input type="range" min="100" max="900" step="100" value="400">
 					</li>
 					<li><span class="th">文字揃え：</span>
-						<label><input type="radio" name="soroe" value="left" id=i7 checked>左</label>
-						<label><input type="radio" name="soroe" value="center" id=i8 >中</label>
-						<label><input type="radio" name="soroe" value="right" id=i9>右</label>
+						<label><input type="radio" name="soroe" value="left" checked>左</label>
+						<label><input type="radio" name="soroe" value="center">中</label>
+						<label><input type="radio" name="soroe" value="right">右</label>
 					</li>
 
 	
 					<li><span class="th">段落枠太さ：</span>
-						<input type="range" value="1" min=0 max=50 id=i11>
+						<input type="range" value="1" min="0" max="50">
 					</li>
 					
 					<li><span class="th">段落枠色：</span>
-						<input type="color" id=i10>
+						<input type="color">
 					</li>
 
 
 					<li><span class="th">段落背景色：</span>
-						<input type="color" value="#ffffff" id=i12>
+						<input type="color" value="#ffffff">
 					</li>
 				</ol>
 				<p>CSSコード</p>
@@ -140,21 +144,20 @@
 	line-height:`+ input[0].value +`px;
 	width:`+ input[1].value +`px;
 	font-size:`+ input[2].value +`px;
-	color:`+ input[3].value +`;
+	padding:`+input[3].value +`px;
+	color:`+ input[4].value +`;
 	font-family:`
-					+ (input[4].checked ? input[4].value : "")
-					+ (input[5].checked ? input[5].value : "") + `;
-	font-weight:`+ input[6].value +`;
+					+ (input[5].checked ? input[5].value : "")
+					+ (input[6].checked ? input[6].value : "") + `;
+	font-weight:`+ input[7].value +`;
 	text-align:`
-		+ (input[7].checked ? input[7].value : "") 
-		+ (input[8].checked ? input[8].value : "")
-		+ (input[9].checked ? input[9].value : "") + `;
-	border:`+ input[11].value +` solid `+ input[10].value +`px;
-	background-color:`+ input[12].value +`;`;
+		+ (input[8].checked ? input[8].value : "") 
+		+ (input[9].checked ? input[9].value : "")
+		+ (input[10].checked ? input[10].value : "") + `;
+	border:`+ input[12].value +` solid `+ input[11].value +`px;
+	background-color:`+ input[13].value +`;`;
 				dsv.innerHTML=str;
 				box1.style=str;
-
-				console.log(input[4].value );
 			}
 		
 		</script>
