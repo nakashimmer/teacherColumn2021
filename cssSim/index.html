@@ -63,57 +63,51 @@
 			<div id="ctrl">
 				<ol>
 					<li><span class="th">行間(行高)：</span>
-						<input type="range" min="5" max="50" step="1" value="18" id="０">
+						<input type="range" min="5" max="50" step="1" value="18">
 					</li>
 
 					<li><span class="th">段落の幅：</span>
-						<input type="range" min="0" max="600" step="1" value="300" id="１">
+						<input type="range" min="0" max="600" step="1" value="300">
 					</li>
 
 					<li><span class="th">文字の大きさ：</span>
-						<input type="range" min="0" max="100" value="16" id="２">
+						<input type="range" min="0" max="100" value="16">
 					</li>
 					
 					<li><span class="th">枠内余白：</span>
-						<input type="range" min="0" max="100" value="0" id="３">
+						<input type="range" min="0" max="100" value="0">
 					</li>
 
 					<li><span class="th">文字の色：</span>
-						<input type="color"　 id="４">
+						<input type="color">
 					</li>
 
 					<li><span class="th">フォント：</span>
-						<label><input type="radio" name="font" value="serif" checked　 >明朝体</label>
-						<label><input type="radio" name="font" value="sans-serif"　>ゴシック体</label>
+						<label><input type="radio" name="font" value="serif" checked>明朝体</label>
+						<label><input type="radio" name="font" value="sans-serif">ゴシック体</label>
 					</li>
 
 					<li><span class="th">文字太さ:</span>
-						<input type="range" min="100" max="900" step="100" value="400"　 id="7">
+						<input type="range" min="100" max="900" step="100" value="400">
 					</li>
 					<li><span class="th">文字揃え：</span>
-						<label><input type="radio" name="soroe" value="left" id="8" checked　>左</label>
-						<label><input type="radio" name="soroe" value="center" id="9">中</label>
-						<label><input type="radio" name="soroe" value="right" id="10">右</label>
+						<label><input type="radio" name="soroe" value="left" checked>左</label>
+						<label><input type="radio" name="soroe" value="center">中</label>
+						<label><input type="radio" name="soroe" value="right">右</label>
 					</li>
 
 	
 					<li><span class="th">段落枠太さ：</span>
-						<input type="range" value="1" min="0" max="50" id="11">
+						<input type="range" value="1" min="0" max="50">
 					</li>
 					
 					<li><span class="th">段落枠色：</span>
-						<input type="color" id="12">
+						<input type="color">
 					</li>
 
-					<li><span class="th">枠線スタイル：</span>
-						<label><input type="radio" name="borderStyle" value="solid" id="13" checked>実線</label>
-						<label><input type="radio" name="borderStyle" value="double" id="14">二重線</label>
-						<label><input type="radio" name="borderStyle" value="dotted" id="15">ドット</label>
-						<label><input type="radio" name="borderStyle" value="dashed" id="16">破線</label>
-					</li>
-					
+
 					<li><span class="th">段落背景色：</span>
-						<input type="color" value="#ffffff" id="17"> 
+						<input type="color" value="#ffffff">
 					</li>
 				</ol>
 				<p>CSSコード</p>
@@ -145,31 +139,23 @@
 			}
 			Change();		
 			function Change(){
-	///////////////////////////////////////////////////
+
 				let str = `
-	line-height: `+ input[0].value +`px;
-	width: `+ input[1].value +`px;
-	font-size: `+ input[2].value +`px;
-	padding: `+input[3].value +`px;
-	color: `+ input[4].value +`;
-	font-family: `
-		+ (input[5].checked ? input[5].value : "")
-		+ (input[6].checked ? input[6].value : "") + `;
-	font-weight: `+ input[7].value +`;
-	text-align: `
+	line-height:`+ input[0].value +`px;
+	width:`+ input[1].value +`px;
+	font-size:`+ input[2].value +`px;
+	padding:`+input[3].value +`px;
+	color:`+ input[4].value +`;
+	font-family:`
+					+ (input[5].checked ? input[5].value : "")
+					+ (input[6].checked ? input[6].value : "") + `;
+	font-weight:`+ input[7].value +`;
+	text-align:`
 		+ (input[8].checked ? input[8].value : "") 
 		+ (input[9].checked ? input[9].value : "")
 		+ (input[10].checked ? input[10].value : "") + `;
-	border: `
-		+ input[12].value +` `+
-		+ (input[13].checked ? input[13].value : "")
-		+ (input[14].checked ? input[14].value : "") 
-		+ (input[15].checked ? input[15].value : "") 
-		+ (input[16].checked ? input[16].value : "") +` `+
-		+ input[11].value +`px;
-	background-color: `
-		+ input[17].value +`;`;
-	///////////////////////////////////////////////////			
+	border:`+ input[12].value +` solid `+ input[11].value +`px;
+	background-color:`+ input[13].value +`;`;
 				dsv.innerHTML=str;
 				box1.style=str;
 			}
