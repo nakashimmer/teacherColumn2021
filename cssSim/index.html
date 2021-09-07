@@ -105,7 +105,13 @@
 						<input type="color">
 					</li>
 
-
+					<li><span class="th">枠線スタイル：</span>
+						<label><input type="radio" name="borderStyle" value="solid" checked>実線</label>
+						<label><input type="radio" name="borderStyle" value="double">二重線</label>
+						<label><input type="radio" name="borderStyle" value="dotted">ドット</label>
+						<label><input type="radio" name="borderStyle" value="dashed">破線</label>
+					</li>
+					
 					<li><span class="th">段落背景色：</span>
 						<input type="color" value="#ffffff">
 					</li>
@@ -139,23 +145,31 @@
 			}
 			Change();		
 			function Change(){
-
+	///////////////////////////////////////////////////
 				let str = `
-	line-height:`+ input[0].value +`px;
-	width:`+ input[1].value +`px;
-	font-size:`+ input[2].value +`px;
-	padding:`+input[3].value +`px;
-	color:`+ input[4].value +`;
-	font-family:`
-					+ (input[5].checked ? input[5].value : "")
-					+ (input[6].checked ? input[6].value : "") + `;
-	font-weight:`+ input[7].value +`;
-	text-align:`
+	line-height: `+ input[0].value +`px;
+	width: `+ input[1].value +`px;
+	font-size: `+ input[2].value +`px;
+	padding: `+input[3].value +`px;
+	color: `+ input[4].value +`;
+	font-family: `
+		+ (input[5].checked ? input[5].value : "")
+		+ (input[6].checked ? input[6].value : "") + `;
+	font-weight: `+ input[7].value +`;
+	text-align: `
 		+ (input[8].checked ? input[8].value : "") 
 		+ (input[9].checked ? input[9].value : "")
 		+ (input[10].checked ? input[10].value : "") + `;
-	border:`+ input[12].value +` solid `+ input[11].value +`px;
-	background-color:`+ input[13].value +`;`;
+	border: `
+		+ input[12].value +" "+
+		+ (input[13].checked ? input[13].value : "")
+		+ (input[14].checked ? input[14].value : "") 
+		+ (input[15].checked ? input[15].value : "") 
+		+ (input[16].checked ? input[16].value : "") 
+		+ input[11].value +`px;
+	background-color: `
+		+ input[17].value +`;`;
+	///////////////////////////////////////////////////			
 				dsv.innerHTML=str;
 				box1.style=str;
 			}
